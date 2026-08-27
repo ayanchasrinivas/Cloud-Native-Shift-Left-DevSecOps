@@ -1,5 +1,24 @@
 version: '3.9'
+
 services:
+  frontend:
+    build: ./frontend-service
+    ports:
+      - "3000:80"
+    depends_on:
+      - user-service
+      - order-service
+  
+  user-service:
+    build: ./user-service
+    ports:
+      - "8080:8080"
+
+  order-service:
+    build: ./order-service
+    ports:
+      - "5000:5000"
+
   sonarqube:
     image: sonarqube:community
     ports:
