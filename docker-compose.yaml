@@ -10,9 +10,12 @@ services:
       - sonar_data:/opt/sonarqube/data
       - sonar_extensions:/opt/sonarqube/extensions
       - sonar_logs:/opt/sonarqube/logs
-  
+
   jenkins:
-    image: jenkins/jenkins:lts-jdk17
+    build:
+      context: ./custom-dockerfiles
+      dockerfile: jenkins.Dockerfile
+    # image: jenkins/jenkins:lts-jdk17
     ports:
       - "8081:8080"
       - "50000:50000"
@@ -21,9 +24,17 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
     environment:
       - JAVA_OPTS=-Djenkins.install.runSetupWizard=true
+    networks:
+      - default
+      - kind
 
 volumes:
   jenkins_home:
   sonar_data:
   sonar_extensions:
   sonar_logs:
+
+networks:
+  default:
+  kind:
+    external: true
