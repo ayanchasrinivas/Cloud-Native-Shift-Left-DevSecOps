@@ -30,4 +30,3 @@ class UserServiceApplicationTests {
         assertFalse(service.getUserById(user.getId()).isPresent());
     }
 }
-
