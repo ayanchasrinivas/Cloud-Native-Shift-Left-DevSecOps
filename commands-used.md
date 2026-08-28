@@ -4,3 +4,6 @@
 
 # for pre-commit hooks
 4) pip install pre-commit
+5) pip install detect-secrets
+5) pre-commit install
+6) detect-secrets scan > .secrets.baseline
