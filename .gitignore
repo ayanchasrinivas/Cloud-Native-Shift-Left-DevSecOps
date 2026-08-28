@@ -3,3 +3,7 @@
 .vscode/
 *.swp
 *.swo
+
+# Cosign keys
+cosign.key
+cosign.pub
